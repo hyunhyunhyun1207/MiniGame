@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MiniGameMain {
     final static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         // 메뉴 [1] 업앤다운 [2] 가위바위보 [3] 숫자야구 [4] 종료
         // 각 게임이 끝나면 메뉴로 돌아오기
         // 유효하지 않은 입력은 전부 재입력 ex) 메뉴가 4개인데 1~4가 아닌 숫자가 들어옴 -> 재입력
@@ -28,9 +28,43 @@ public class MiniGameMain {
             }
         }
     }
+    public static void upAndDown() {
+        // 업앤 다운
+        int comNum = (int)(Math.random() * 100 + 1);
+        int count = 1;
+        System.out.println("7번의 기회가 주어집니다.");
+        while (true) {
+            if (count == 8) {
+                System.out.println("정답은 : " + comNum);
+                System.out.println("실패");
+                break;
+            }
+            System.out.println("---" + count + "번" + "---");
+            System.out.print("숫자 입력 : ");
+            int userNum = sc.nextInt();
 
-    public static void rsp() {
+            if (userNum > 100 || userNum < 0) {
+                System.out.println("1 ~ 100까지의 숫자만 입력 하세요");
+                continue;
+            }
+            if (comNum > userNum) {
+                System.out.println("-업-");
+                count++;
+
+            } else if (comNum < userNum) {
+                System.out.println("-다운-");
+                count++;
+            } else {
+                System.out.println("정답!");
+                break;
+            }
+        }
+    }
+
+
+    public static void rsp() throws InterruptedException {
         // 가위바위보
+
         System.out.println("----가위바위보----");
         while (true) {
             int user = 0;
@@ -42,6 +76,13 @@ public class MiniGameMain {
                 System.out.println("가위, 바위, 보 중에서만 입력하세요");
                 continue;
             }
+
+            System.out.println("가위!!!!!!!");
+            Thread.sleep(1000);
+            System.out.println("바위!!!!!!!");
+            Thread.sleep(1000);
+            System.out.println("보!!!!!!!!!");
+
 
             if (userRsp.equals("가위")) user = 1;
             if (userRsp.equals("바위")) user = 2;
