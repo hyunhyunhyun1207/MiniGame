@@ -29,40 +29,6 @@ public class MiniGameMain {
         }
     }
 
-    public static void upAndDown() {
-        // 업앤 다운
-        int comNum = (int)(Math.random() * 100 + 1);
-        int count = 1;
-        System.out.println("7번의 기회가 주어집니다.");
-        while (true) {
-            if (count == 8) {
-                System.out.println("정답은 : " + comNum);
-                System.out.println("실패");
-                break;
-            }
-            System.out.println("---" + count + "번" + "---");
-            System.out.print("숫자 입력 : ");
-            int userNum = sc.nextInt();
-
-            if (userNum > 100 || userNum < 0) {
-                System.out.println("1 ~ 100까지의 숫자만 입력 하세요");
-                continue;
-            }
-            if (comNum > userNum) {
-                System.out.println("-업-");
-                count++;
-
-            } else if (comNum < userNum) {
-                System.out.println("-다운-");
-                count++;
-            } else {
-                System.out.println("정답!");
-                break;
-            }
-        }
-    }
-
-
     public static void rsp() {
         // 가위바위보
         System.out.println("----가위바위보----");
@@ -92,7 +58,7 @@ public class MiniGameMain {
                   if (user == 2) {
                     System.out.println("결과 : 이김");
                     break;
-                } else {
+                  } else {
                     System.out.println("결과 : 패배");
                 }
                   // 2번 바위
